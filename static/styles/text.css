@@ -1,0 +1,12 @@
+.primary{
+    font-size: 40px;
+    letter-spacing: 2px;
+    font-family: var(--RAJDHANI);
+}
+
+.text{
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  font-family: var(--RAJDHANI);
+}

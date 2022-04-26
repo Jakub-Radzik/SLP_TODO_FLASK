@@ -1,0 +1,24 @@
+<div id="header">
+    <div id="header-container">
+        <div class="header-box start-box">
+            <img src="{{ url_for('static',filename='./images/todo.png') }}" alt="logo" id="logo">
+        </div>
+        <div class="header-box">
+            <h1 class="primary" style="color: white;">
+                SLP_TODO
+            </h1>
+        </div>
+        <div class="header-box end-box">
+            <h1 class="primary" style="color: white;">
+                {% if session['username']  %}
+                    Welcome {{ session['username'] }} <a href="/users/logout">
+                <img src="{{ url_for('static',filename='./images/logOut.png') }}" alt="logout" id="logout">
+            </a>
+                {% else %}
+                    <a href="{{ url_for('users.login') }}">Login</a>
+                {% endif %}
+            </h1>
+
+        </div>
+    </div>
+</div>

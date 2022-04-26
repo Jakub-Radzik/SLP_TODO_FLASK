@@ -1,0 +1,52 @@
+.styled-input {
+  font-family: var(--RAJDHANI);
+  font-size: large;
+  width: 100%;
+  height: 50px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid var(--GRAY);
+  outline: none;
+}
+
+.styled-text-area{
+    font-family: var(--RAJDHANI);
+    font-size: large;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    resize: none;
+    border: none;
+    outline: none;
+    padding: 5px;
+}
+
+.button{
+  font-family: var(--RAJDHANI);
+  font-size: xx-large;
+  border-radius: 30px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.styled-button {
+    border: 1px solid var(--MAXIMUM_RED_PURPLE);
+    color: var(--WHITE);
+    background: var(--VERMILION);
+    transition: all 0.3s ease-in-out;
+}
+
+.styled-button:hover {
+    background: var(--MAXIMUM_RED_PURPLE);
+    color: var(--WHITE);
+}
+
+.styled-button:active {
+    color: var(--VERMILION);
+    background: var(--WHITE);
+}

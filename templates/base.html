@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>SLP_TODO_DEPRECATED</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/header.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/text.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/forms.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+  {% include 'header.html' %}
+  <main class="inner-app">
+    {% block main %}{% endblock %}
+  </main>
+</body>
+</html>

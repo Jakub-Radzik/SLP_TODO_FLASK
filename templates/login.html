@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/login.css') }}">
+{% endblock %}
+
+{% block main %}
+ <div class="base-container login-container">
+     <div id="login-view">
+        <div class="left-wrapper">
+            <h1 class="primary" style="color: var(--MAXIMUM_RED_PURPLE)">
+                Login
+            </h1>
+            <p class="text" style="color: var(--GRAY); text-align: left" >
+                Welcome! Login to make your life simpler through managing your
+            future tasks.
+            </p>
+        </div>
+
+         <form class="wrapper" method="post" action="/users/login">
+             <input class="styled-input" id="login" name="login" type="text" placeholder="Login" required/>
+             <input class="styled-input" id="password" name="password" type="password" placeholder="Password" required/>
+            <button class="button styled-button" type="submit">
+                 Login
+             </button>
+         </form>
+
+         <div class="wrapper">
+             <p class="text">
+                 Don't have an account?
+             </p>
+             <a href=" {{ url_for('users.register')  }}">Register</a>
+         </div>
+     </div>
+ </div>
+
+{% endblock %}

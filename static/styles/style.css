@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
+
+:root {
+    --RICH_BLACK: #042A2B;
+    --VERMILION: #D84727;
+    --MAXIMUM_RED_PURPLE: #A74482;
+    --WHITE: #FEFCFD;
+    --PLATINUM: #D8E2DC;
+    --GRAY: #8b8b8b;
+    --LIGHT_GRAY: #dacaca;
+    --BLUE: #5b15ce;
+
+    --RAJDHANI: "Rajdhani";
+    --SIZE_RADIUS: 200px;
+    --HEADER_HEIGHT: 100px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.base-container{
+        width: 100%;
+    max-width: 1600px;
+    display: flex;
+}
+
+.inner-app {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-wrapper{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.wrapper{
+      width: 50%;
+}
+
+.wrapper > * {
+    margin: 5px 0;
+}
+
+.row  {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 5px 0;
+}
+
+.row > * :not(:last-child) {
+margin-right: 10px;
+}
