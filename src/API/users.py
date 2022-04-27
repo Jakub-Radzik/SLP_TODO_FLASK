@@ -1,9 +1,8 @@
 import hashlib
-import json
-
 from flask import request, jsonify, Blueprint, render_template, session, redirect, url_for
 from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
-from src.DB.DB import users_collection, tasks_collection
+
+from src.DB.DB import users_collection
 
 users = Blueprint('users', __name__, template_folder='templates')
 
