@@ -4,7 +4,6 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from src.API.tasks import tasks
 from src.API.users import users
-from src.DB.DB import init_db
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})

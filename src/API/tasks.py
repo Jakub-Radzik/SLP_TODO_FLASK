@@ -2,6 +2,7 @@ from bson import ObjectId
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
+from src.DB.DB import users_collection, tasks_collection
 
 tasks = Blueprint('tasks', __name__)
 
