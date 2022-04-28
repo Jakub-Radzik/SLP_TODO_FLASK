@@ -2,7 +2,7 @@ from bson import ObjectId
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
-from src.DB.DB import users_collection, tasks_collection
+from src.DB.DB import Database
 
 tasks = Blueprint('tasks', __name__)
 
@@ -11,7 +11,7 @@ tasks = Blueprint('tasks', __name__)
 @jwt_required()
 def get_tasks():
     current_user = get_jwt_identity()
-    user_from_db = users_collection.find_one({'username': current_user})
+    user_from_db = Database.find_one('users', {'username': current_user})
     if user_from_db:
         tasks_from_db = tasks_collection.find({'user_id': str(user_from_db['_id'])})
         tasks = []
