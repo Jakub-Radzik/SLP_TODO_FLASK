@@ -29,7 +29,6 @@ import pymongo
 
 
 class Database(object):
-
     db = None
 
     @staticmethod
@@ -52,3 +51,12 @@ class Database(object):
     @staticmethod
     def insert_one(collection, data):
         Database.db[collection].insert_one(data)
+
+    @staticmethod
+    def delete_one(collection, data):
+        Database.db[collection].delete_one(data)
+
+    @staticmethod
+    def update_one(collection, data):
+        Database.db[collection].update_one(data)
+

@@ -37,6 +37,7 @@ def login():
                 access_token = create_access_token(identity=nickname)
                 session['secret_key'] = access_token
                 session['username'] = nickname
+                redirect(url_for('tasks.get_tasks'))
                 print("GITARA")
         print("ERROR")
     return render_template('login.html')
