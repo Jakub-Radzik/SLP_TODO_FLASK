@@ -17,7 +17,7 @@ def register():
         if not doc:
             Database.insert_one('users', new_user)
             print("GITARA")
-            redirect(url_for('users.login'))
+            return redirect(url_for('users.login'))
         else:
             print("user exists")
     return render_template('register.html')
@@ -37,8 +37,8 @@ def login():
                 access_token = create_access_token(identity=nickname)
                 session['secret_key'] = access_token
                 session['username'] = nickname
-                redirect(url_for('tasks.get_tasks'))
-                print("GITARA")
+                print("gitara")
+                return redirect(url_for('tasks.get_tasks'))
         print("ERROR")
     return render_template('login.html')
 

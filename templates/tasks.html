@@ -6,26 +6,32 @@
 
 {% block main %}
  <div class="tasks-list">
+     <a href="{{ url_for('tasks.create_task')  }}" style="width: 100%">
+        <div class="create-task">
+            Add new task
+        </div>
+     </a>
+    {% for task in tasks %}
     <div class="task-card">
-        <div class="task-header">
-            <h1 class="task-title"></h1>
+        <div class="task-header" style="background: {{ task.color }}">
+            <h1 class="task-title">{{ task.title }}</h1>
             <img src="" alt="" class="info">
         </div>
         <div class="task-content">
-            <p class="task-text"></p>
+            <p class="task-text">{{ task.content }}</p>
         </div>
         <div class="task-operations">
             <a href="">
-                <img src="" alt=""/>
+                <img src="{{ url_for('static',filename='images/edit.png') }}" alt="edit" class="operation"/>
             </a>
-            <a href="">
-                <img src="" alt=""/>
+            <a href="{{url_for('tasks.duplicate_task', task_id=task._id)}}">
+                <img src="{{ url_for('static',filename='images/duplicate.png') }}" alt="duplicate" class="operation"/>
             </a>
-            <a href="">
-                <img src="" alt=""/>
+            <a href="{{url_for('tasks.delete_task', task_id=task._id)}}">
+                <img src="{{ url_for('static',filename='images/delete.png') }}" alt="delete" class="operation"/>
             </a>
         </div>
     </div>
+    {% endfor %}
  </div>
-
 {% endblock %}

@@ -39,7 +39,7 @@ code {
     min-height: calc(100vh - 100px);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .left-wrapper{
@@ -68,4 +68,9 @@ code {
 
 .row > * :not(:last-child) {
 margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--RICH_BLACK);
 }

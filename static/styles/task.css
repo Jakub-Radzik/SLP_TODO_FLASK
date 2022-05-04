@@ -31,7 +31,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /*background-color: ${({ color }) => color};*/
     width: 100%;
     border-radius: 25px 25px 0 0;
 }
@@ -71,4 +70,24 @@
   background-color: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 100%;
+}
+
+.operation {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.create-task {
+    font-family: var(--RAJDHANI);
+  font-size: xx-large;
+  border-radius: 30px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+    border: 2px solid var(--RICH_BLACK);
+  box-shadow: 1px 3px 2px 0 var(--MAXIMUM_RED_PURPLE);
 }
