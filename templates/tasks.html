@@ -21,7 +21,7 @@
             <p class="task-text">{{ task.content }}</p>
         </div>
         <div class="task-operations">
-            <a href="">
+            <a href="{{url_for('tasks.update_task', task_id=task._id)}}">
                 <img src="{{ url_for('static',filename='images/edit.png') }}" alt="edit" class="operation"/>
             </a>
             <a href="{{url_for('tasks.duplicate_task', task_id=task._id)}}">

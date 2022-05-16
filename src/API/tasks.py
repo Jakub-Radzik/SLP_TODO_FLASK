@@ -81,15 +81,19 @@ def get_task_by_id(task_id):
         return jsonify({'msg': 'Profile not found'}), 404
 
 
-@tasks.route("/tasks/<task_id>", methods=["PATCH"])
-@jwt_required()
+@tasks.route("/update/<task_id>", methods=["GET", "POST"])
 def update_task(task_id):
-    current_user = get_jwt_identity()
+    current_user = session.get('username')
     user_from_db = Database.find_one('users', {'username': current_user})
-    if user_from_db:
-        updated_task = request.get_json()
-        print(updated_task)
-        Database.update_one('tasks', {'_id': ObjectId(task_id)}, {'$set': updated_task})
-        return jsonify({'msg': 'Task updated successfully'}), 200
+    if not user_from_db:
+        return redirect(url_for('users.login'))
+    task = Database.find_one('tasks', ObjectId(task_id))
+    if request.method == "POST":
+        if task:
+            task_data = dict(request.form)
+            task_data['user_id'] = str(user_from_db['_id'])
+            task_data['created_at'] = str(datetime.now())
+            Database.update_one('tasks', {'_id': ObjectId(task_id)}, {'$set': task_data})
+            return redirect(url_for('tasks.get_tasks'))
     else:
-        return jsonify({'msg': 'Profile not found'}), 404
+        return render_template('update_task.html', task=task)

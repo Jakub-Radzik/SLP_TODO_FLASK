@@ -57,6 +57,6 @@ class Database(object):
         Database.db[collection].delete_one(data)
 
     @staticmethod
-    def update_one(collection, data):
-        Database.db[collection].update_one(data)
+    def update_one(collection, data, query):
+        Database.db[collection].update_one(data, query)
 

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/task.css') }}">
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/create_task.css') }}">
+{% endblock %}
+
+{% block main %}
+ <form class="tasks-list" style="align-self: center" method="post" action="/tasks/update/{{ task._id }}">
+        <div class="task-card">
+        <div class="task-header">
+            <input type="text" name="title" id="title" placeholder="Title" value={{ task.title }}  required />
+            <input  type="color" name="color" id="color" value={{ task.color }} required  />
+        </div>
+        <div class="task-content">
+            <textarea placeholder="Content..." name="content" rows="10" cols="50" class="styled-text-area" required> {{ task.content }}</textarea>
+        </div>
+    </div>
+    <div>
+        <button type="submit" class="button styled-button">Update task</button>
+        <a href="{{ url_for('tasks.get_tasks') }}">
+            <input type="button" class="button styled-button2" value="Cancel"/>
+        </a>
+    </div>
+ </form>
+{% endblock %}
+
