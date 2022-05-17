@@ -15,7 +15,12 @@
     <div class="task-card">
         <div class="task-header" style="background: {{ task.color }}">
             <h1 class="task-title">{{ task.title }}</h1>
-            <img src="" alt="" class="info">
+            <div class="info">
+                <div>Created at: {{ task.created_at[:16]}}</div>
+                {% if task.modified_at %}
+                    <div>Modified at: {{ task.modified_at[:16]}}</div>
+                {% endif %}
+            </div>
         </div>
         <div class="task-content">
             <p class="task-text">{{ task.content }}</p>

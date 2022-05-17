@@ -57,6 +57,10 @@ class Database(object):
         Database.db[collection].delete_one(data)
 
     @staticmethod
+    def delete_many(collection, data):
+        Database.db[collection].delete_many(data)
+
+    @staticmethod
     def update_one(collection, data, query):
         Database.db[collection].update_one(data, query)
 

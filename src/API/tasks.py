@@ -92,7 +92,7 @@ def update_task(task_id):
         if task:
             task_data = dict(request.form)
             task_data['user_id'] = str(user_from_db['_id'])
-            task_data['created_at'] = str(datetime.now())
+            task_data['modified_at'] = str(datetime.now())
             Database.update_one('tasks', {'_id': ObjectId(task_id)}, {'$set': task_data})
             return redirect(url_for('tasks.get_tasks'))
     else:

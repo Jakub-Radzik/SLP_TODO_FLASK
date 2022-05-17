@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='./styles/settings.css') }}">
+{% endblock %}
+
+{% block main %}
+ <div class="settings">
+     <h1>Edit your information</h1>
+     <div>
+         <p>{{ user.name }}</p>
+         <p>{{ user.surname }}</p>
+         <p>{{ user.email }}</p>
+     </div>
+     <form action="">
+{#         <input type="text" name="priority" id="priority" placeholder="Priority" value={{ user.priority }} required />#}
+     </form>
+     <form action="/users/delete" method="POST">
+        <button type="submit" class="button styled-button">Delete account</button>
+     </form>
+ </div>
+{% endblock %}

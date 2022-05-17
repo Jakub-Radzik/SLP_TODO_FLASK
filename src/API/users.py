@@ -49,28 +49,23 @@ def logout():
     return redirect(url_for('users.login'))
 
 
-#i dont know if we need it anymore
-# @users.route("/user", methods=["GET"])
-# @jwt_required()
-# def profile():
-#     current_user = get_jwt_identity()
-#     user_from_db = users_collection.find_one({'username': current_user})
-#     if user_from_db:
-#         del user_from_db['_id'], user_from_db['password']
-#         return jsonify({'profile': user_from_db}), 200
-#     else:
-#         return jsonify({'msg': 'Profile not found'}), 404
+@users.route('/settings', methods=['GET', 'POST'])
+def settings():
+    current_user = session.get('username')
+    user_from_db = Database.find_one('users', {'username': current_user})
+    if request.method == 'POST':
+        pass
+
+    return render_template('settings.html', user=user_from_db)
 
 
-# @users.route("/api/v1/user", methods=["DELETE"])
-# @jwt_required()
-# def delete_user():
-#     current_user = get_jwt_identity()
-#     user_from_db = users_collection.find_one({'username': current_user})
-#     if user_from_db:
-#         users_collection.delete_one({'username': current_user})
-#         tasks_collection.delete_many({'username': current_user})
-#         return jsonify({'msg': 'User deleted'}), 200
-#     else:
-#         return jsonify({'msg': 'User not found'}), 404
-#
+@users.route("/delete", methods=["POST"])
+def delete_user():
+    current_user = session.get('username')
+    user_from_db = Database.find_one('users', {'username': current_user})
+    if user_from_db:
+        Database.delete_one('users', {'username': current_user})
+        Database.delete_many('tasks', {'username': current_user})
+        return redirect(url_for('users.logout'))
+    else:
+        return redirect(url_for('users.settings'))

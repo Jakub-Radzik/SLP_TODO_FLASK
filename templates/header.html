@@ -11,9 +11,7 @@
         <div class="header-box end-box">
             <h1 class="primary" style="color: white;">
                 {% if session['username']  %}
-                    Welcome {{ session['username'] }} <a href="/users/logout">
-                <img src="{{ url_for('static',filename='./images/logOut.png') }}" alt="logout" id="logout">
-            </a>
+                    Welcome {{ session['username'] }}
                 {% else %}
                     <a href="{{ url_for('users.login') }}">Login</a>
                 {% endif %}
@@ -22,3 +20,18 @@
         </div>
     </div>
 </div>
+
+{% if session['username']  %}
+<div class="style-box">
+<div></div>
+</div>
+<nav>
+    <a href="/users/settings">
+        <img src="{{ url_for('static',filename='./images/settings.png') }}" alt="settings" id="settings">
+    </a>
+    <a href="/users/logout">
+        <img src="{{ url_for('static',filename='./images/logOut.png') }}" alt="logout" id="logout">
+    </a>
+</nav>
+{% endif %}
+
