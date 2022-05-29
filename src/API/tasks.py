@@ -7,6 +7,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from src.DB.DB import Database
 
 tasks = Blueprint('tasks', __name__)
+default_msg = "It's me! Message box."
 
 
 @tasks.route("/tasks", methods=["GET"])
@@ -24,8 +25,7 @@ def get_tasks():
             progress = int(100 * (sum(1 if task['completed'] else 0 for task in tasks) / len(tasks)))
         except ZeroDivisionError:
             progress = 0
-
-        return render_template('tasks.html', tasks=tasks, progress=progress)
+        return render_template('tasks.html', tasks=tasks, progress=progress, msg=default_msg)
     else:
         return redirect(url_for('users.login'))
 

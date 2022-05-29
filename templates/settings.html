@@ -7,13 +7,25 @@
 {% block main %}
  <div class="settings">
      <h1>Edit your information</h1>
-     <div>
-         <p>{{ user.name }}</p>
-         <p>{{ user.surname }}</p>
-         <p>{{ user.email }}</p>
-     </div>
-     <form action="">
-{#         <input type="text" name="priority" id="priority" placeholder="Priority" value={{ user.priority }} required />#}
+     <table>
+         <tr>
+             <td><b>First name:</b></td>
+             <td>{{ user.name }}</td>
+         </tr>
+         <tr>
+             <td><b>Last name:</b></td>
+             <td>{{ user.surname }}</td>
+         </tr>
+         <tr>
+             <td><b>E-mail:</b></td>
+             <td>{{ user.email }}</td>
+         </tr>
+     </table>
+     <form id="password-change" action="/users/settings" method="POST">
+         <input class="styled-input" type="password" name="old_password" id="old_password" placeholder="Old password" required />
+         <input class="styled-input" type="password" name="password" id="password" placeholder="New password" required />
+         <input class="styled-input" type="password" name="repeat_password" id="repeat_password" placeholder="Repeat new password" required />
+        <button type="submit" class="button styled-button">Change password</button>
      </form>
      <form action="/users/delete" method="POST">
         <button type="submit" class="button styled-button">Delete account</button>

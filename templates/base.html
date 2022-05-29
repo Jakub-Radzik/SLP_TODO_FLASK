@@ -12,6 +12,11 @@
   {% include 'header.html' %}
   <main class="inner-app">
     {% block main %}{% endblock %}
+    {% if msg %}
+        <div class="msg">
+            <p>{{ msg }}</p>
+        </div>
+    {% endif %}
   </main>
 </body>
 </html>
