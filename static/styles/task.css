@@ -28,15 +28,42 @@
     position: relative;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     border-radius: 25px 25px 0 0;
+    padding: 20px 0;
+}
+.task-header>*{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+#title{
+    display: block;
+    font-family: var(--RAJDHANI);
+}
+
+.status {
+    font-size: 20px;
+    color: white;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.status > div {
+    width: 50%;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .task-content {
-    overflow: hidden;
+overflow: hidden;
   width: 100%;
   border-top: 3px solid var(--MAXIMUM_RED_PURPLE);
   padding: 0 10px;
@@ -44,8 +71,12 @@
   text-align: left;
 }
 
+.edit-task-content{
+height: 200px;
+}
+
 .task-text {
-      letter-spacing: 0.5px;
+  letter-spacing: 0.5px;
   font-size: 20px;
 }
 
@@ -63,6 +94,8 @@
 }
 
 .info {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     right: 10px;
     top: 10px;
@@ -86,4 +119,35 @@
   width: 100%;
     border: 2px solid var(--RICH_BLACK);
   box-shadow: 1px 3px 2px 0 var(--MAXIMUM_RED_PURPLE);
+}
+
+.submit-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 5px;
+}
+
+.submit-buttons > *{
+    width: 45%;
+}
+
+.create-task-form, .update-task-form{
+    align-items: flex-start;
+}
+
+input[type="color"]{
+    border:none;
+    width: 100%;
+    height: 30px;
+}
+
+.styled-text-area{
+    height: 200px;
+}
+
+progress{
+    width: 100%;
+    height: 30px;
 }

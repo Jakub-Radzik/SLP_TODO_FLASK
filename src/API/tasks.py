@@ -20,8 +20,12 @@ def get_tasks():
         for task in tasks_from_db:
             task['_id'] = str(task['_id'])
             tasks.append(task)
-        print(tasks)
-        return render_template('tasks.html', tasks=tasks)
+        try:
+            progress = int(100 * (sum(1 if task['completed'] else 0 for task in tasks) / len(tasks)))
+        except ZeroDivisionError:
+            progress = 0
+
+        return render_template('tasks.html', tasks=tasks, progress=progress)
     else:
         return redirect(url_for('users.login'))
 
@@ -60,6 +64,11 @@ def duplicate_task(task_id):
         finded = Database.find_one('tasks', {'_id': ObjectId(task_id)})
         if finded:
             del finded['_id']
+            finded['created_at'] = str(datetime.now())
+            try:
+                del finded['modified_at']
+            except:
+                pass
             Database.insert_one('tasks', finded)
     return redirect(url_for('tasks.get_tasks'))
 
@@ -97,3 +106,16 @@ def update_task(task_id):
             return redirect(url_for('tasks.get_tasks'))
     else:
         return render_template('update_task.html', task=task)
+
+
+@tasks.route("/toggle_status/<task_id>", methods=['GET'])
+def toggle_status(task_id):
+    current_user = session.get('username')
+    user_from_db = Database.find_one('users', {'username': current_user})
+    if not user_from_db:
+        return redirect(url_for('users.login'))
+    task = Database.find_one('tasks', ObjectId(task_id))
+    if task:
+        task['completed'] = not task['completed']
+        Database.update_one('tasks', {'_id': ObjectId(task_id)}, {'$set': task})
+    return redirect(url_for('tasks.get_tasks'))

@@ -11,11 +11,31 @@
             Add new task
         </div>
      </a>
+    {% if tasks %}
+        <h1 style="margin: 30px 0 0 0">Your tasks progress: {{ progress }}% </h1>
+        <progress style="margin: 0 0 30px 0" id="file" value="{{ progress }}" max="100"></progress>
+    {% endif %}
     {% for task in tasks %}
     <div class="task-card">
         <div class="task-header" style="background: {{ task.color }}">
-            <h1 class="task-title">{{ task.title }}</h1>
-            <div class="info">
+            <div class="status">
+                {% if task.completed %}
+                    <div style="background-color: #0eac0e">
+                {% else  %}
+                    <div style="background-color: red">
+                {% endif %}
+                    <div>Status:</div>
+                {% if task.completed %}
+                    <div>Done</div>
+                {% else  %}
+                    <div>Not done</div>
+                {% endif %}
+                </div>
+            </div>
+            <h1 class="task-title" style="color: {{ task.fontColor }}">{{ task.title }}</h1>
+            <div>
+            </div>
+            <div class="info"  style="color: {{ task.fontColor }}">
                 <div>Created at: {{ task.created_at[:16]}}</div>
                 {% if task.modified_at %}
                     <div>Modified at: {{ task.modified_at[:16]}}</div>
@@ -34,6 +54,14 @@
             </a>
             <a href="{{url_for('tasks.delete_task', task_id=task._id)}}">
                 <img src="{{ url_for('static',filename='images/delete.png') }}" alt="delete" class="operation"/>
+            </a>
+            <a href="">
+            <a href="{{url_for('tasks.toggle_status', task_id=task._id)}}">
+                {% if task.completed %}
+                    <button class="button styled-button">Restart task</button>
+                {% else  %}
+                    <button class="button styled-button">Complete task</button>
+                {% endif %}
             </a>
         </div>
     </div>

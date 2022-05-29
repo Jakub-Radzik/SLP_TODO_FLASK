@@ -6,17 +6,28 @@
 {% endblock %}
 
 {% block main %}
- <form class="tasks-list" style="align-self: center" method="post" action="/tasks/update/{{ task._id }}">
-        <div class="task-card">
+ <form class="tasks-list update-task-form" style="align-self: center" method="post" action="/tasks/update/{{ task._id }}">
+    <h1>Update your task</h1>
+     <div class="task-card">
         <div class="task-header">
-            <input type="text" name="title" id="title" placeholder="Title" value={{ task.title }}  required />
-            <input  type="color" name="color" id="color" value={{ task.color }} required  />
+            <div>
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" placeholder="Title" value={{ task.title }}  required />
+            </div>
+            <div>
+                <label for="color">Background color</label>
+                <input  type="color" name="color" id="color" value={{ task.color }} required  />
+            </div>
+            <div>
+                <label for="fontColor">Font color</label>
+                <input  type="color" name="fontColor" id="fontColor" value={{ task.fontColor }} required  />
+            </div>
         </div>
-        <div class="task-content">
+        <div class="task-content edit-task-content">
             <textarea placeholder="Content..." name="content" rows="10" cols="50" class="styled-text-area" required> {{ task.content }}</textarea>
         </div>
     </div>
-    <div>
+    <div class="submit-buttons">
         <button type="submit" class="button styled-button">Update task</button>
         <a href="{{ url_for('tasks.get_tasks') }}">
             <input type="button" class="button styled-button2" value="Cancel"/>
