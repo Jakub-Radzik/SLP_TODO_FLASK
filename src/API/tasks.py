@@ -65,6 +65,7 @@ def duplicate_task(task_id):
         if finded:
             del finded['_id']
             finded['created_at'] = str(datetime.now())
+            finded['completed'] = False
             try:
                 del finded['modified_at']
             except:
