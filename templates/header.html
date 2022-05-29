@@ -1,12 +1,24 @@
 <div id="header">
     <div id="header-container">
         <div class="header-box start-box">
+            {% if session['username']  %}
+                <a href="/tasks/tasks">
+            {% else %}
+                <a href="/users/login">
+            {% endif %}
             <img src="{{ url_for('static',filename='./images/todo.png') }}" alt="logo" id="logo">
+                </a>
         </div>
         <div class="header-box">
-            <h1 class="primary" style="color: white;">
-                SLP_TODO
-            </h1>
+            {% if session['username']  %}
+                <a href="/tasks/tasks">
+            {% else %}
+                <a href="/users/login">
+            {% endif %}
+                <h1 class="primary" style="color: white;">
+                    SLP_TODO
+                </h1>
+            </a>
         </div>
         <div class="header-box end-box">
             <h1 class="primary" style="color: white;">

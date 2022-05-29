@@ -22,9 +22,9 @@ def register():
                 Database.insert_one('users', new_user)
                 return redirect(url_for('users.login'))
             else:
-                return render_template('register.html', msg="User exist !!!")
+                return render_template('register.html', msg="User exist !!!", danger=True)
         else:
-            return render_template('register.html', msg="Passwords are different !!!")
+            return render_template('register.html', msg="Passwords are different !!!", danger=True)
     return render_template('register.html', msg=default_msg)
 
 
@@ -44,7 +44,7 @@ def login():
                 session['username'] = nickname
                 print("gitara")
                 return redirect(url_for('tasks.get_tasks'))
-        return render_template('login.html', msg="Something went wrong with logging into system.")
+        return render_template('login.html', msg="Something went wrong with logging into system.", danger=True)
     return render_template('login.html', msg=default_msg)
 
 
@@ -67,8 +67,8 @@ def settings():
             Database.update_one('users', {'_id': ObjectId(user_from_db['_id'])}, {'$set': user_from_db})
             return render_template('settings.html', user=user_from_db, msg="Passoword correctly changed")
         else:
-            return render_template('settings.html', user=user_from_db, msg="Something went wrong with your new passwords!!!")
-    return render_template('settings.html', user=user_from_db)
+            return render_template('settings.html', user=user_from_db, msg="Something went wrong with your new passwords!!!", danger=True)
+    return render_template('settings.html', user=user_from_db, msg=default_msg)
 
 
 @users.route("/delete", methods=["POST"])

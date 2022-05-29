@@ -75,7 +75,7 @@ a {
     color: var(--RICH_BLACK);
 }
 
-.msg{
+.msg {
     position: absolute;
     right: 10px;
     bottom: 10px;
@@ -84,4 +84,10 @@ a {
     border: 3px dashed #000;
     border-radius: 20px;
     padding: 5px;
+    background: #189818;
+    color: white;
+}
+
+.danger {
+    background: red;
 }

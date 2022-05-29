@@ -13,7 +13,11 @@
   <main class="inner-app">
     {% block main %}{% endblock %}
     {% if msg %}
-        <div class="msg">
+        {% if danger %}
+            <div class="msg danger">
+        {% else %}
+            <div class="msg">
+        {% endif %}
             <p>{{ msg }}</p>
         </div>
     {% endif %}

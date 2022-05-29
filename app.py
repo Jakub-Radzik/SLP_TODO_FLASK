@@ -1,6 +1,6 @@
 import datetime
 
-from flask import Flask, redirect, url_for, session
+from flask import Flask, redirect, url_for
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from src.API.tasks import tasks
