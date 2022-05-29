@@ -5,7 +5,6 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from src.API.tasks import tasks
 from src.API.users import users
-from flask_pymongo import PyMongo
 
 from src.DB.DB import Database
 
@@ -14,7 +13,6 @@ def create_app():
     app = Flask(__name__)
     Database.init()
     app.config['MONGO_URI'] = 'mongodb://localhost:27017/slp_todo'
-    mongo = PyMongo(app)
     cors = CORS(app, resources={r"/*": {"origins": "*"}})
     app.config['CORS_HEADERS'] = 'Content-Type'
     app.secret_key = "super secret key"
