@@ -7,7 +7,7 @@ from src.API.tasks import tasks
 from src.API.users import users
 
 from src.DB.DB import Database
-
+#
 app = Flask(__name__)
 Database.init()
 app.config['MONGO_URI'] = 'mongodb://localhost:27017/slp_todo'
